@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import useMenu from "../../../hooks/useMenu";
-import FoodCard from "../../FoodCard/FoodCard";
+import useMenu from "../../hooks/useMenu";
+import FoodCard from "../FoodCard/FoodCard";
 
 const OurMenu = () => {
   const [menu] = useMenu();

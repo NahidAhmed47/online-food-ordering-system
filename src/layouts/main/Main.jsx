@@ -4,7 +4,6 @@ import Navbar from '../../components/shared/Navbar';
 import MiniTopNav from '../../components/shared/MiniTopNav';
 import Footer from '../../components/shared/Footer';
 import Loading from '../../components/shared/Loading';
-import BannerHome from '../../pages/Home/BannerHome';
 
 const Main = () => {
     const navigation = useNavigation();
@@ -19,7 +18,6 @@ const Main = () => {
                 <Navbar></Navbar>
             </div>
             <MiniTopNav></MiniTopNav>
-            <BannerHome></BannerHome>
             <Outlet></Outlet>
             <Footer></Footer>
             <ScrollRestoration></ScrollRestoration>
