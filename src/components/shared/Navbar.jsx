@@ -25,7 +25,7 @@ const Navbar = ({children}) => {
         <div className='flex justify-between items-center px-5 md:px-0 max-container py-1'>
         <Link to="/" className='flex gap-2 items-center'>
             <img className='h-14 w-14' src="https://i.ibb.co/G06HxpD/logo.png" alt="" />
-            <h1 className='text-white text-xl md:text-3xl font-bold font-mono'>Cooking <span className='primary-color'>Classy</span></h1>
+            <h1 className='text-white text-xl md:text-3xl font-bold font-mono'>Food <span className='primary-color'>Panshi</span></h1>
         </Link>
         <FaTimes className={isOpenMenu ? 'md:hidden w-6 h-6 text-white' : 'hidden'} onClick={toggleMenu}></FaTimes>
         <FaBars className={!isOpenMenu ? 'md:hidden w-6 h-6 text-white' : 'hidden'} onClick={toggleMenu}></FaBars>

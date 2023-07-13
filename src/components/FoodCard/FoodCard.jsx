@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const FoodCard = ({ food }) => {
+const FoodCard = ({ food, handleOrder }) => {
   const { _id, name, recipe, image, price } = food;
   return (
-    <div className="flex flex-col justify-between rounded-md shadow hover:shadow-lg px-3 py-4 group duration-300">
+    <div className="flex flex-col justify-between rounded-md shadow hover:shadow-lg p-4 group duration-300">
       <div className=" relative">
         <div className="overflow-hidden">
         <img
@@ -25,7 +24,7 @@ const FoodCard = ({ food }) => {
       </div>
       <div className="flex justify-between items-center">
         <p className="text-base font-semibold text-[#E25111]">${price}</p>
-        <button className="bg-white border border-[#E25111] text-[#E25111] px-3 py-1 duration-300 hover:bg-[#E25111] font-medium  text-sm rounded hover:text-white">
+        <button className="bg-white border border-[#E25111] text-[#E25111] px-3 py-1 duration-300 hover:bg-[#E25111] font-medium  text-sm rounded hover:text-white" onClick={() => (window.food_order_modal.showModal(), handleOrder(_id))}>
           Order Now
         </button>
       </div>
