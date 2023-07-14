@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import PagesBanner from "../../components/shared/PagesBanner";
 import OrderRow from "../../components/OrderRow/OrderRow";
+import axiosInstance from "../../utls/axiosInstance";
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);
+    const [menu, setMenu] = useState([]);
     useEffect(() => {
         const getOrdersData = async () => {
-            const res = await fetch(`http://localhost:3000/orders/${JSON.parse(localStorage.getItem('customerId'))}`);
-            const data = await res.json();
+            const res = await axiosInstance.get(`/orders/${JSON.parse(localStorage.getItem('customerId'))}`);
+            const data = await res.data;
             setOrders(data);
         };
         getOrdersData();
+    },[])
+    useEffect(() => {
+        const getAllMenu = async () => {
+            const res = await axiosInstance.get(`/menu?limit=0`);
+            const data = await res.data;
+            setMenu(data);
+        };
+        getAllMenu();
     },[])
   return (
     <div>
@@ -32,7 +42,7 @@ const MyOrders = () => {
             </thead>
             <tbody>
               {
-                orders.map((order, index) => <OrderRow key={order._id} order={order} index={index}></OrderRow>)
+                orders.map((order, index) => <OrderRow key={order._id} order={order} index={index} menu={menu}></OrderRow>)
               }
             </tbody>
           </table>

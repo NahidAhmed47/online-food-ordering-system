@@ -1,8 +1,7 @@
 import React from "react";
 import useMenu from "../../hooks/useMenu";
 
-const OrderRow = ({ order, index }) => {
-    const [menu] = useMenu();
+const OrderRow = ({ order, index, menu }) => {
     const findFood = menu.find(food => food._id === order.foodId);
     const {quantity, price, order_time, estimated_delivery_date} = order;
   return (

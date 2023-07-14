@@ -4,6 +4,7 @@ import FoodCard from "../FoodCard/FoodCard";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import setCustomerId from "../../utls/setCustomerId";
 import { toast } from "react-hot-toast";
+import axiosInstance from "../../utls/axiosInstance";
 
 const OurMenu = () => {
   const [menu, setLimit] = useMenu();
@@ -26,14 +27,8 @@ const OurMenu = () => {
       estimated_delivery_date: new Date(new Date().setDate(new Date().getDate()+Math.floor(Math.random() * 10))).toDateString(),
       customerId: JSON.parse(localStorage.getItem('customerId'))
     }
-    fetch('http://localhost:3000/order', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(order)
-    }).then(res => res.json()).then(data => {
-      if(data.insertedId || data.modifiedCount === 1){
+    axiosInstance.put('/order', order).then(res => {
+      if(res.data.insertedId || res.data.modifiedCount === 1){
         toast.success('Order Successful!')
         document.getElementById('food_order_modal').close()
       }
@@ -57,7 +52,7 @@ const OurMenu = () => {
       </div>
       <div className="w-full h-fit flex justify-center mt-8 mb-20">
         {
-          menu.length <= 8 ? <button onClick={()=> setLimit(0)} className="text-[#E25111] font-semibold">See More &#8594;</button> : <button onClick={()=> setLimit(8)} className="text-[#E25111] font-semibold">See Less &#8594;</button>
+          menu.length <= 8 ? <button onClick={()=> setLimit(0)} className="text-[#E25111] font-semibold">See More &#8594;</button> : <button onClick={()=> setLimit(8)} className="text-[#E25111] font-semibold">See Less</button>
         }
       </div>
       {/* Modal */}
