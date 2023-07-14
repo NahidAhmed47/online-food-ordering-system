@@ -45,7 +45,7 @@ const OurMenu = () => {
         </div>
       </div>
       {/* food menu */}
-      <div className="max-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+      <div className="max-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 px-2 md:px-0">
         {menu.map((food) => (
           <FoodCard key={food._id} food={food} handleOrder={handleOrder}></FoodCard>
         ))}

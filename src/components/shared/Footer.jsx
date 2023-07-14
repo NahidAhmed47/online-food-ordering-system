@@ -6,11 +6,11 @@ const Footer = () => {
         <div className='w-full py-10 md:py-20 bg-[#1b1919] px-5 lg:px-0'>
             <div className='max-container grid md:grid-cols-4 mb-8 text-white gap-3 md:gap-12'>
                 <div>
-                    <h1 className='text-2xl font-bold font-serif'>Why Cooking Classy?</h1>
+                    <h1 className='text-2xl font-bold font-serif'>Why Food Panshi?</h1>
                     <div className='w-full bg-white mt-2'><div className='border border-[#E25111] w-[40%] h-0'></div></div>
                     <div className='mt-4 md:mt-8'>
-                        <p>At Cooking Classy, chefs are family. That's why, for over three decades, our editors have devoted countless hours and thousands of meals to scouting.</p>
-                        <p className='mt-3'>Discovering the most talented up-and-comers in America.</p>
+                        <p>At Food Panshi, We provide you best quality food. That's why, for over three decades, our editors have devoted countless hours and thousands of meals to scouting and </p>
+                        <p className='mt-3'>discovering the most talented  in the world.</p>
                     </div>
                 </div>
                 <div>

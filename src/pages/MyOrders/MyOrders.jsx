@@ -33,7 +33,7 @@ const MyOrders = () => {
               <tr className="text-base text-gray-600 font-medium">
                 <th>No.</th>
                 <th>Image</th>
-                <th>Name</th>
+                <th>Food Name</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
                 <th>Order Time</th>
