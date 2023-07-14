@@ -7,10 +7,49 @@ This project is a simple online food ordering system for a restaurant. It allows
 - Order Summary: After placing an order, users can view a summary of their order, including the dishes ordered, quantities, total price, order place delivery time and estimated delivery time.
 
 ## Technologies Used
-- Front-end: React.js, TailwindCSS.
+- Front-end: React.js, TailwindCSS
 - Back-end: Node.js, Express.js
 - Database: MongoDB
-- packages: Axios, React-router-dom, React-icons, React-hot-toast.
+- packages: Axios, React-router-dom, React-icons, React-hot-toast
+- Deployment: Netlify, Vercel
+
+## Folder Structure
+
+The project follows the following folder structure:
+
+- `src`: Contains the source code files.
+    - `components`: Contains reusable single components.
+        - `FoodCard`
+        - `OrderRow`
+        - `OurMenuSection`
+        - `Shared`: contains navbar, footer and common files.
+            - `Footer`
+            - `Loading`
+            - `MiniTopNav`
+            - `Navbar`
+    - `hooks`: Contains custom hook of the application.
+        - `useMenu`
+    - `layouts`: Contains layouts file of the application.
+        - `main`
+    - `pages`: Contains different pages of the application.
+        - `Home`
+        - `Menu`
+        - `MyOrders`
+        - `About`
+        - `Contact`
+        - `ErrorPage`
+    - `routes`: Contains all routes code of the application.
+        - `router`
+    - `utls`: The entry point of the React application.
+        - `axiosInstance.js`
+        - `setCustomerId.js`
+    - `index.css`: The main css file of the React application.
+    - `main.jsx`: The main file for render of the React application.
+- `README.md`: The main documentation file.
+- `index.html`: The main documentation file.
+- `package.json`: The file that lists project dependencies and scripts.
+- `tailwind.config.js`: The file that lists project dependencies and scripts.
+- `vite.config.js`: The file that lists project dependencies and scripts.
 
 ## Installation Client Site
 
@@ -42,7 +81,7 @@ cd online-food-ordering-system
 npm install
 ```
 ```bash
-npm run dev
+npm start
 ```
 
 ## Client Site Live Link
