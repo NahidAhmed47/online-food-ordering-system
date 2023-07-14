@@ -4,7 +4,7 @@ const useMenu = () => {
   const [menu, setMenu] = useState([]);
   useEffect(() => {
     const getMenuData = async () => {
-      const res = await fetch("https://bistro-boss-server-two.vercel.app/menu");
+      const res = await fetch("http://localhost:3000/menu");
       const data = await res.json();
       setMenu(data);
     };

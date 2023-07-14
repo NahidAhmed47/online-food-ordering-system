@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useMenu from "../../hooks/useMenu";
 import FoodCard from "../FoodCard/FoodCard";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import setCustomerId from "../../utls/setCustomerId";
 
 const OurMenu = () => {
   const [menu] = useMenu();
@@ -11,6 +12,20 @@ const OurMenu = () => {
   const handleOrder = (e) => {
     const findSelectedFood = menu.find(food => food._id === e)
     setSelectedFood(findSelectedFood)
+    setQuantity(1)
+    setCustomerId()
+  }
+  // handle confirm order
+  const handleConfirmOrder = () => {
+    const order = {
+      foodId: selectedFood?._id,
+      quantity,
+      price: (selectedFood?.price * quantity).toFixed(2),
+      order_time: [new Date().toLocaleTimeString(), new Date().toDateString()],
+      estimated_delivery_date: new Date(new Date().setDate(new Date().getDate()+Math.floor(Math.random() * 10))).toDateString(),
+      customerId: JSON.parse(localStorage.getItem('customerId'))
+    }
+    console.log(order)
   }
   return (
     <div>
@@ -47,10 +62,10 @@ const OurMenu = () => {
                  <button className="w-full h-full flex justify-center items-center" onClick={()=> setQuantity(quantity + 1)}><FaPlus className="w-3 h-3"></FaPlus></button>
               </div>
               <div className="flex items-center justify-end font-medium text-[#E25111]">
-                Total Price: ${selectedFood?.price * quantity}
+                Total Price: ${(selectedFood?.price * quantity).toFixed(2) || 0}
               </div>
             </div>
-            <button className="mt-3 w-full text-center py-1 hover:bg-white border border-[#E25111] hover:text-[#E25111] duration-300 bg-[#E25111] text-white font-semibold rounded">Confirm Order</button>
+            <button onClick={handleConfirmOrder} className="mt-3 w-full text-center py-1 hover:bg-white border border-[#E25111] hover:text-[#E25111] duration-300 bg-[#E25111] text-white font-semibold rounded">Confirm Order</button>
           </div>
         </div>
         <form method="dialog" className="modal-backdrop">

@@ -23,7 +23,7 @@ const FoodCard = ({ food, handleOrder }) => {
         </div>
       </div>
       <div className="flex justify-between items-center">
-        <p className="text-base font-semibold text-[#E25111]">${price}</p>
+        <p className="text-base font-semibold text-[#E25111]">${(price).toFixed(2)}</p>
         <button className="bg-white border border-[#E25111] text-[#E25111] px-3 py-1 duration-300 hover:bg-[#E25111] font-medium  text-sm rounded hover:text-white" onClick={() => (window.food_order_modal.showModal(), handleOrder(_id))}>
           Order Now
         </button>
