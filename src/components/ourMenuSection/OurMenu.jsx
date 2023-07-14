@@ -25,7 +25,17 @@ const OurMenu = () => {
       estimated_delivery_date: new Date(new Date().setDate(new Date().getDate()+Math.floor(Math.random() * 10))).toDateString(),
       customerId: JSON.parse(localStorage.getItem('customerId'))
     }
-    console.log(order)
+    fetch('http://localhost:3000/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    }).then(res => res.json()).then(data => {
+      if(data.insertedId){
+        document.getElementById('food_order_modal').close()
+      }
+    })
   }
   return (
     <div>
