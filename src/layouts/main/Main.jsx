@@ -4,6 +4,7 @@ import Navbar from '../../components/shared/Navbar';
 import MiniTopNav from '../../components/shared/MiniTopNav';
 import Footer from '../../components/shared/Footer';
 import Loading from '../../components/shared/Loading';
+import { Toaster } from 'react-hot-toast';
 
 const Main = () => {
     const navigation = useNavigation();
@@ -20,6 +21,7 @@ const Main = () => {
             <MiniTopNav></MiniTopNav>
             <Outlet></Outlet>
             <Footer></Footer>
+            <Toaster position='bottom-center'></Toaster>
             <ScrollRestoration></ScrollRestoration>
         </div>
     );

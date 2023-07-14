@@ -3,9 +3,10 @@ import useMenu from "../../hooks/useMenu";
 import FoodCard from "../FoodCard/FoodCard";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import setCustomerId from "../../utls/setCustomerId";
+import { toast } from "react-hot-toast";
 
 const OurMenu = () => {
-  const [menu] = useMenu();
+  const [menu, setLimit] = useMenu();
   const [selectedFood, setSelectedFood] = useState({});
   const [quantity, setQuantity] = useState(2);
   // order handle
@@ -20,19 +21,20 @@ const OurMenu = () => {
     const order = {
       foodId: selectedFood?._id,
       quantity,
-      price: (selectedFood?.price * quantity).toFixed(2),
+      price: parseFloat((selectedFood?.price * quantity).toFixed(2)),
       order_time: [new Date().toLocaleTimeString(), new Date().toDateString()],
       estimated_delivery_date: new Date(new Date().setDate(new Date().getDate()+Math.floor(Math.random() * 10))).toDateString(),
       customerId: JSON.parse(localStorage.getItem('customerId'))
     }
     fetch('http://localhost:3000/order', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(order)
     }).then(res => res.json()).then(data => {
-      if(data.insertedId){
+      if(data.insertedId || data.modifiedCount === 1){
+        toast.success('Order Successful!')
         document.getElementById('food_order_modal').close()
       }
     })
@@ -52,6 +54,11 @@ const OurMenu = () => {
         {menu.map((food) => (
           <FoodCard key={food._id} food={food} handleOrder={handleOrder}></FoodCard>
         ))}
+      </div>
+      <div className="w-full h-fit flex justify-center mt-8 mb-20">
+        {
+          menu.length <= 8 ? <button onClick={()=> setLimit(0)} className="text-[#E25111] font-semibold">See More &#8594;</button> : <button onClick={()=> setLimit(8)} className="text-[#E25111] font-semibold">See Less &#8594;</button>
+        }
       </div>
       {/* Modal */}
       <dialog id="food_order_modal" className="modal">

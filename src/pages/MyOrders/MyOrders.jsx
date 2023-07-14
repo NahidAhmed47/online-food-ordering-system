@@ -6,7 +6,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
         const getOrdersData = async () => {
-            const res = await fetch("http://localhost:3000/orders");
+            const res = await fetch(`http://localhost:3000/orders/${JSON.parse(localStorage.getItem('customerId'))}`);
             const data = await res.json();
             setOrders(data);
         };
